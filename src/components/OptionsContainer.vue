@@ -59,7 +59,7 @@ export default {
   padding: 1em 1.5em;
   background: #FFFFFF;
   box-shadow: 0px -1px 5px -2px rgba(0, 40, 68, 0.1), 0px -30px 51px -15px rgba(2, 57, 95, 0.15);
-  border-radius: 32px 32px 0px 0px;
+  border-radius: 32px 32px 0 0;
 }
 
 .options__header {

@@ -12,7 +12,7 @@
 
         <tr :ref="item.uuid" v-for="item in list" v-bind:key="item.uuid">
           <td>
-            <label class="container">
+            <label class="checkmark-container">
               <input v-on:input="updateBucketListItem(item.uuid, item.done)" type="checkbox" v-model="item.done">
               <span class="checkmark"></span>
             </label>
@@ -23,7 +23,6 @@
             <i @click="toggleOptions(item)" class="fa-solid fa-ellipsis btn__options"></i>
           </td>
         </tr>
-
       </table>
 
       <OptionsContainer v-if="optionsOpen" :toggleClose="toggleOptions" :itemData="itemDataForOptions"/>
@@ -34,12 +33,12 @@
 
 <script>
 
-
 import OptionsContainer from "@/components/OptionsContainer";
 import BucketListAPI from "@/services/BucketListAPI";
 
 export default {
   setup () {
+
     const updateBucketListItem = async (id, boolean) => {
       try {
         const response = await BucketListAPI.putBucketListItem( id, !boolean );
@@ -130,7 +129,7 @@ td {
 }
 
 /* Customize the label (the container) */
-.container {
+.checkmark-container {
   display: block;
   position: relative;
   margin: 0 auto 25px;
@@ -144,7 +143,7 @@ td {
 }
 
 /* Hide the browser's default checkbox */
-.container input {
+.checkmark-container input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
@@ -165,16 +164,16 @@ td {
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input ~ .checkmark {
+.checkmark-container:hover input ~ .checkmark {
   background-color: var(--light-activity-clr);
 }
 
-.container:active input ~ .checkmark {
+.checkmark-container:active input ~ .checkmark {
   background-color: var(--dark-activivity-clr);
 }
 
 /* When the checkbox is checked, add a blue background */
-.container input:checked ~ .checkmark {
+.checkmark-container input:checked ~ .checkmark {
   background-color: var(--dark-theme-clr);
 }
 
@@ -186,19 +185,18 @@ td {
 }
 
 /* Show the checkmark when checked */
-.container input:checked ~ .checkmark:after {
+.checkmark-container input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the checkmark/indicator */
-.container .checkmark:after {
+.checkmark-container .checkmark:after {
   left: 9px;
   top: 5px;
   width: 5px;
   height: 11px;
   border: solid white;
   border-width: 0 2px 2px 0;
-  -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }

@@ -20,6 +20,9 @@ out.
 - Add messages to the user when item is not successfully deleted from the database
 
 
+## Things to improve
+- 
+
 ## Project setup
 ```
 npm install

@@ -28,7 +28,7 @@ export default {
   setup () {
     const removeBucketListItem = async (item) => {
       try {
-        // TODO! Remove item from list view also when deleting. Now it is deleted from view after page is refeshed again
+        // TODO! Remove item from list view  when deleting. Now it is deleted from view after page is refreshed again
         const response = await BucketListAPI.deleteBucketListItem( item.uuid );
         console.log( `Deleted item "${ item.description }"!  ` )
         console.log( "Response from deleted item:", response )
@@ -81,11 +81,6 @@ export default {
 .options__action:hover {
   cursor: pointer;
   opacity: 0.8;
-}
-
-
-@media (min-width: 600px) {
-
 }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="dialog__list-container">
+  <div>
     <div class="table__container">
 
       <table>
@@ -26,8 +26,7 @@
 
       </table>
 
-      <OptionsContainer v-if="optionsOpen" :toggleClose="toggleOptions" :itemData="itemDataForOptions"
-      />
+      <OptionsContainer v-if="optionsOpen" :toggleClose="toggleOptions" :itemData="itemDataForOptions"/>
 
     </div>
   </div>
@@ -54,7 +53,7 @@ export default {
       updateBucketListItem
     }
   },
-  components : { OptionsContainer },
+
   data () {
     return {
       optionsOpen : false,
@@ -70,16 +69,13 @@ export default {
     },
   },
   props : ['list'],
-  name : "ListItems"
+  name : "ListItems",
+  components : { OptionsContainer },
+
 }
 </script>
 
 <style scoped>
-
-.borders {
-  border: 2px solid pink;
-}
-
 
 table {
   width: 100%;
@@ -210,7 +206,6 @@ td {
 @media (min-width: 700px) {
   table {
     padding: 0;
-
   }
 
 }

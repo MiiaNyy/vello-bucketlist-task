@@ -1,6 +1,6 @@
 <template>
   <div class="dialog">
-    <div class="dialog__close" >
+    <div class="dialog__close">
       <i class="fa-solid fa-xmark btn__close"></i>
     </div>
 
@@ -121,8 +121,8 @@ h1, h2, h3, h4, h5, h6, p {
 
 @media (min-width: 700px) {
   .dialog {
-    box-shadow: 1px 1px 0px rgba(0, 40, 68, 0.09), 0px 13.59px 47.8684px -26.89px rgba(2, 57, 95, 0.2), 0px 24.13px 50.97px -29.28px rgba(2, 57, 95, 0.23);
-    border-radius: 16.8947px;
+    box-shadow: 1px 1px 0 rgba(0, 40, 68, 0.09), 0 13px 48px -26.89px rgba(2, 57, 95, 0.2), 0 24px 51px -29.28px rgba(2, 57, 95, 0.23);
+    border-radius: 17px;
     margin-top: 2em;
   }
 
@@ -132,7 +132,6 @@ h1, h2, h3, h4, h5, h6, p {
 
   .dialog__footer {
     width: 600px;
-
   }
 
 }

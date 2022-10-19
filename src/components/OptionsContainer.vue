@@ -20,7 +20,9 @@
 </template>
 
 <script>
+
 export default {
+
   name : "OptionsContainer",
   props : ['toggleClose', 'itemData'],
 }

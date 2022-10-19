@@ -11,7 +11,7 @@
         <tr v-for="item in list" v-bind:key="item.uuid">
           <td>
             <label class="container">
-              <input type="checkbox" v-model="item.done">
+              <input v-on:input="updateBucketListItem(item.uuid, item.done)" type="checkbox" v-model="item.done">
               <span class="checkmark"></span>
             </label>
           </td>
@@ -35,8 +35,23 @@
 
 
 import OptionsContainer from "@/components/OptionsContainer";
+import BucketListAPI from "@/services/BucketListAPI";
 
 export default {
+  setup () {
+    const updateBucketListItem = async (id, boolean) => {
+      try {
+        const response = await BucketListAPI.putBucketListItem( id, !boolean );
+        console.log(`Updated item "${response.data.description}". Item is now done? ${response.data.done}  `)
+
+      } catch ( e ) {
+        console.log( e );
+      }
+    }
+    return {
+      updateBucketListItem
+    }
+  },
   components : { OptionsContainer },
   data () {
     return {

@@ -18,11 +18,13 @@
           <td>{{ item.description }}</td>
           <td class="table-cell__age text-align-right">{{ item['do_before'] }}</td>
           <td class="text-align-right">
-            <i class="fa-solid fa-ellipsis"></i>
+            <i @click="toggleOptions(item)" class="fa-solid fa-ellipsis"></i>
           </td>
         </tr>
-
       </table>
+
+      <OptionsContainer v-if="optionsOpen" :toggleClose="toggleOptions" :itemData="itemDataForOptions"/>
+
     </div>
 
 
@@ -30,7 +32,24 @@
 </template>
 
 <script>
+
+
+import OptionsContainer from "@/components/OptionsContainer";
 export default {
+  components : { OptionsContainer },
+  data () {
+    return {
+      optionsOpen : false,
+      // Item data that user just clicked to see more options
+      itemDataForOptions: '',
+    }
+  },
+  methods : {
+    toggleOptions (itemData) {
+      this.optionsOpen = !this.optionsOpen;
+      this.itemDataForOptions = itemData;
+    }
+  },
   props : ['list'],
   name : "ListItems"
 }

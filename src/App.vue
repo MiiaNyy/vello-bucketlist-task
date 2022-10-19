@@ -1,13 +1,19 @@
 <template>
   <div class="dialog">
-    <div class="dialog__close">x</div>
-    <div class="container">
-      <h1>Bucket list</h1>
+    <div class="dialog__close" >
+      <i class="fa-solid fa-xmark btn__close"></i>
+    </div>
+
+    <div>
+      <div class="dialog__header">
+        <h1>Bucket list</h1>
+      </div>
       <ListItems :list="bucketList"/>
       <div class="dialog__footer">
         <button class="dialog__btn">Done</button>
       </div>
     </div>
+
   </div>
 
 </template>
@@ -56,6 +62,10 @@ body {
   margin: 0;
 }
 
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
 #app {
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -66,17 +76,25 @@ body {
 .dialog {
   width: 100%;
   max-width: 700px;
-
-  border: 1px solid pink;
+  margin: 0 auto;
 }
 
 .dialog__close {
   text-align: right;
+  padding: 1em 1.5em 0;
+}
+
+.dialog__header {
+  width: 100%;
+  max-width: 600px;
+  padding: 0.5em 1em;
+  margin: 0 auto;
 }
 
 .dialog__footer {
-  margin-top: 1em;
-  padding: 2em 0 0;
+  width: 100%;
+  margin: 1em auto 2em;
+  padding: 2em 0;
   border-top: 1px solid #B5C5D0;
   text-align: center;
 }
@@ -89,6 +107,34 @@ body {
   border: none;
   font-weight: 700;
   font-size: 16px;
+  cursor: pointer;
+}
+
+.btn__close {
+  color: #99A9B4;
+  cursor: pointer;
+}
+
+.btn__close:hover {
+  color: var(--warning-clr);
+}
+
+@media (min-width: 700px) {
+  .dialog {
+    box-shadow: 1px 1px 0px rgba(0, 40, 68, 0.09), 0px 13.59px 47.8684px -26.89px rgba(2, 57, 95, 0.2), 0px 24.13px 50.97px -29.28px rgba(2, 57, 95, 0.23);
+    border-radius: 16.8947px;
+    margin-top: 2em;
+  }
+
+  .dialog__footer {
+    text-align: right;
+  }
+
+  .dialog__footer {
+    width: 600px;
+
+  }
+
 }
 
 </style>

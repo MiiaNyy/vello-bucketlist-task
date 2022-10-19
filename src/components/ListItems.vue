@@ -3,10 +3,10 @@
     <div class="table__container">
       <table>
         <tr>
-          <th class="borders">Done</th>
-          <th class="borders empty"></th>
-          <th class="borders">Do before age</th>
-          <th class="borders"></th>
+          <th style="text-align: left">Done</th>
+          <th ></th>
+          <th>Do before age</th>
+          <th></th>
         </tr>
         <tr v-for="item in list" v-bind:key="item.uuid">
           <td>
@@ -17,8 +17,8 @@
           </td>
           <td>{{ item.description }}</td>
           <td class="table-cell__age text-align-right">{{ item['do_before'] }}</td>
-          <td class="text-align-right">
-            <i @click="toggleOptions(item)" class="fa-solid fa-ellipsis"></i>
+          <td class="text-align-right ">
+            <i @click="toggleOptions(item)" class="fa-solid fa-ellipsis btn__options" ></i>
           </td>
         </tr>
       </table>
@@ -35,13 +35,14 @@
 
 
 import OptionsContainer from "@/components/OptionsContainer";
+
 export default {
   components : { OptionsContainer },
   data () {
     return {
       optionsOpen : false,
       // Item data that user just clicked to see more options
-      itemDataForOptions: '',
+      itemDataForOptions : '',
     }
   },
   methods : {
@@ -63,7 +64,9 @@ export default {
 
 
 table {
-  padding: 0.5em 0;
+  width: 100%;
+  max-width: 600px;
+  padding: 0.5em 1em;
   margin: 0 auto;
   border-collapse: separate;
   border-spacing: 0 1.2em;
@@ -75,7 +78,6 @@ th {
   font-weight: 600;
   font-size: 12px;
   line-height: 120%;
-  /* or 14px */
   text-align: right;
   letter-spacing: 0.25px;
 }
@@ -83,8 +85,7 @@ th {
 td {
   vertical-align: center;
   padding: 0.5em 0;
-  min-width: 50px;
-  border: 1px solid blue;
+  min-width: 20px;
 }
 
 .table__container {
@@ -102,6 +103,18 @@ td {
   letter-spacing: 0.5px;
 }
 
+.btn__options {
+  font-size: 16px;
+  padding: 3px;
+  cursor: pointer;
+  border-radius: 100%;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn__options:hover {
+  background-color: var(--dark-activivity-clr);
+}
+
 /* Customize the label (the container) */
 .container {
   display: block;
@@ -113,6 +126,7 @@ td {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+
 }
 
 /* Hide the browser's default checkbox */
@@ -138,7 +152,11 @@ td {
 
 /* On mouse-over, add a grey background color */
 .container:hover input ~ .checkmark {
-  background-color: #ffffff;
+  background-color: var(--light-activity-clr);
+}
+
+.container:active input ~ .checkmark {
+  background-color: var(--dark-activivity-clr);
 }
 
 /* When the checkbox is checked, add a blue background */
@@ -171,5 +189,12 @@ td {
   transform: rotate(45deg);
 }
 
+@media (min-width: 700px) {
+  table {
+    padding: 0;
+
+  }
+
+}
 
 </style>

@@ -1,5 +1,6 @@
 <template>
   <p>{{ bucketList }}</p>
+  <button @click="changeStatus">Change Antarctica status</button>
 </template>
 
 <script>
@@ -14,21 +15,22 @@ export default {
     const loadBucketList = async () => {
       try {
         const response = await BucketListAPI.getBucketList();
-        console.log(response);
-        bucketList.value = response.data.data;
+        console.log( response );
+        bucketList.value = response.data;
 
       } catch ( e ) {
         console.error( e );
       }
     }
     loadBucketList();
+
+
     return {
-      bucketList
+      bucketList,
     }
   },
-  name: 'App',
-  components: {
-  }
+  name : 'App',
+  components : {},
 }
 </script>
 

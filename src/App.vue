@@ -1,15 +1,33 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <p>{{ bucketList }}</p>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import { ref } from "vue";
+import BucketListAPI from "@/services/BucketListAPI";
 
 export default {
+  setup () {
+    const bucketList = ref( '' );
+    // Get request
+    const loadBucketList = async () => {
+      try {
+        const response = await BucketListAPI.getBucketList();
+        console.log(response);
+        bucketList.value = response.data.data;
+
+      } catch ( e ) {
+        console.error( e );
+      }
+    }
+    loadBucketList();
+    return {
+      bucketList
+    }
+  },
   name: 'App',
   components: {
-    HelloWorld
   }
 }
 </script>

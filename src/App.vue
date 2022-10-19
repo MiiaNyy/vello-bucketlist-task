@@ -8,7 +8,9 @@
       <div class="dialog__header">
         <h1>Bucket list</h1>
       </div>
+
       <ListItems :list="bucketList"/>
+
       <div class="dialog__footer">
         <button class="dialog__btn">Done</button>
       </div>
@@ -27,7 +29,7 @@ import ListItems from "@/components/ListItems";
 export default {
   setup () {
     const bucketList = ref( '' );
-    // Get request
+    // Initial get request for items in the database
     const loadBucketList = async () => {
       try {
         const response = await BucketListAPI.getBucketList();
@@ -37,6 +39,7 @@ export default {
         console.error( e );
       }
     }
+
     loadBucketList();
 
 

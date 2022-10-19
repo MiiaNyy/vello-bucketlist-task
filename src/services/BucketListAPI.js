@@ -7,7 +7,7 @@ export default {
 	
 	putBucketListItem (id, data) {
 		return API().put( `/${ id }`,
-			{ done : data } ,
+			{ done : data },
 		)
 	},
 	

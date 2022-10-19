@@ -1,14 +1,16 @@
 <template>
   <div class="dialog__list-container">
     <div class="table__container">
+
       <table>
         <tr>
           <th style="text-align: left">Done</th>
-          <th ></th>
+          <th></th>
           <th>Do before age</th>
           <th></th>
         </tr>
-        <tr v-for="item in list" v-bind:key="item.uuid">
+
+        <tr :ref="item.uuid" v-for="item in list" v-bind:key="item.uuid">
           <td>
             <label class="container">
               <input v-on:input="updateBucketListItem(item.uuid, item.done)" type="checkbox" v-model="item.done">
@@ -18,16 +20,16 @@
           <td>{{ item.description }}</td>
           <td class="table-cell__age text-align-right">{{ item['do_before'] }}</td>
           <td class="text-align-right ">
-            <i @click="toggleOptions(item)" class="fa-solid fa-ellipsis btn__options" ></i>
+            <i @click="toggleOptions(item)" class="fa-solid fa-ellipsis btn__options"></i>
           </td>
         </tr>
+
       </table>
 
-      <OptionsContainer v-if="optionsOpen" :toggleClose="toggleOptions" :itemData="itemDataForOptions"/>
+      <OptionsContainer v-if="optionsOpen" :toggleClose="toggleOptions" :itemData="itemDataForOptions"
+      />
 
     </div>
-
-
   </div>
 </template>
 
@@ -42,7 +44,7 @@ export default {
     const updateBucketListItem = async (id, boolean) => {
       try {
         const response = await BucketListAPI.putBucketListItem( id, !boolean );
-        console.log(`Updated item "${response.data.description}". Item is now done? ${response.data.done}  `)
+        console.log( `Updated item "${ response.data.description }". Item is now done? ${ response.data.done }  ` )
 
       } catch ( e ) {
         console.log( e );
@@ -58,13 +60,14 @@ export default {
       optionsOpen : false,
       // Item data that user just clicked to see more options
       itemDataForOptions : '',
+      bucketList : '',
     }
   },
   methods : {
     toggleOptions (itemData) {
       this.optionsOpen = !this.optionsOpen;
       this.itemDataForOptions = itemData;
-    }
+    },
   },
   props : ['list'],
   name : "ListItems"

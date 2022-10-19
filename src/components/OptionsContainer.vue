@@ -14,17 +14,36 @@
     </div>
     <div class="options__flex options__action options__actions-del">
       <i class="fa-solid fa-xmark"></i>
-      <p class="options__delete-btn">Delete bucket item</p>
+      <p @click="removeBucketListItem(itemData)" class="options__delete-btn">Delete bucket item</p>
     </div>
   </div>
 </template>
 
 <script>
 
-export default {
 
+import BucketListAPI from "@/services/BucketListAPI";
+
+export default {
+  setup () {
+    const removeBucketListItem = async (item) => {
+      try {
+        // TODO! Remove item from list view also when deleting. Now it is deleted from view after page is refeshed again
+        const response = await BucketListAPI.deleteBucketListItem( item.uuid );
+        console.log( `Deleted item "${ item.description }"!  ` )
+        console.log( "Response from deleted item:", response )
+
+      } catch ( e ) {
+        console.log( e );
+      }
+
+    }
+    return {
+      removeBucketListItem
+    }
+  },
   name : "OptionsContainer",
-  props : ['toggleClose', 'itemData'],
+  props : ['toggleClose', 'itemData', 'bucketList'],
 }
 </script>
 
